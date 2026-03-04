@@ -1,0 +1,43 @@
+# Robots.txt for Share application
+
+# Allow all bots to crawl
+User-agent: *
+Allow: /
+Allow: /post/
+Allow: /profile/
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+Disallow: /*.json
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Allow: /post/
+Allow: /profile/
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+
+User-agent: Bingbot
+Allow: /
+Allow: /post/
+Allow: /profile/
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+
+User-agent: Slurp
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+
+# Block bad bots
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+Disallow: /
+
+# Sitemap (sitemap-posts.xml and sitemap-users.xml — add when backend generates them)
+Sitemap: https://share.app/sitemap.xml

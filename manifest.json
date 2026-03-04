@@ -1,0 +1,95 @@
+{
+  "name": "Share - Социальная платформа",
+  "short_name": "Share",
+  "description": "Share - социальная платформа для обмена контентом, общения и создания сообществ.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#000000",
+  "theme_color": "#007AFF",
+  "categories": ["social", "communication"],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/screenshot-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Лента",
+      "short_name": "Лента",
+      "description": "Откройте ленту с последними постами",
+      "url": "/?mode=feed",
+      "icons": [
+        {
+          "src": "/images/feed-icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Профиль",
+      "short_name": "Профиль",
+      "description": "Перейти на ваш профиль",
+      "url": "/?mode=profile",
+      "icons": [
+        {
+          "src": "/images/profile-icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "media",
+          "accept": [
+            "image/*",
+            "video/*"
+          ]
+        }
+      ]
+    }
+  }
+}

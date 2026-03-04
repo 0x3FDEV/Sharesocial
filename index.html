@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-content" />
+    
+    <!-- Essential SEO Meta Tags -->
+    <meta name="description" content="Share - социальная платформа для обмена контентом, общения и создания сообществ. Делитесь фото, видео, историями и находите единомышленников." />
+    <meta name="keywords" content="социальная сеть, делиться контентом, общение, фото, видео, истории, сообщества, posts, social media" />
+    <meta name="author" content="Share Team" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://share.app" />
+    <meta property="og:title" content="Share - Социальная платформа для обмена контентом" />
+    <meta property="og:description" content="Присоединяйтесь к сообществу Share. Делитесь контентом, общайтесь с друзьями и находите новые интересные истории." />
+    <meta property="og:image" content="https://share.app/og-image.svg" />
+    <meta property="og:image:alt" content="Share - Социальная платформа" />
+    <meta property="og:site_name" content="Share" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale:alternate" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://share.app" />
+    <meta name="twitter:title" content="Share - Социальная платформа" />
+    <meta name="twitter:description" content="Делитесь контентом и общайтесь в Share" />
+    <meta name="twitter:image" content="https://share.app/og-image.svg" />
+    <meta name="twitter:creator" content="@ShareApp" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://share.app" />
+    
+    <!-- Alternative URLs -->
+    <link rel="alternate" hreflang="en" href="https://share.app/en" />
+    <link rel="alternate" hreflang="ru" href="https://share.app/ru" />
+    <link rel="alternate" hreflang="x-default" href="https://share.app" />
+    
+    <!-- Theme & App Icons -->
+    <meta name="theme-color" content="#007AFF" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="https://sharesocial.ru/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://sharesocial.ru/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://sharesocial.ru/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="https://sharesocial.ru/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Share" />
+    <meta name="application-name" content="Share" />
+    
+    <!-- Security & Performance -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Preconnect & DNS Prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    
+    <script>
+      (function() {
+        var t = localStorage.getItem('app-theme');
+        if (t === 'light' || t === 'dark' || t === 'gray') document.documentElement.setAttribute('data-theme', t);
+        else document.documentElement.setAttribute('data-theme', 'dark');
+      })();
+    </script>
+    <title>Share - Вход в социальную платформу</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              // Reverted to SF Pro / System as default
+              sans: [
+                '"SF Pro Rounded"', 
+                '"SF Pro Display"', 
+                '"SF Pro Text"', 
+                '-apple-system', 
+                'BlinkMacSystemFont', 
+                'Inter', 
+                'ui-sans-serif', 
+                'system-ui', 
+                'sans-serif'
+              ],
+              nunito: ['Nunito', 'sans-serif'],
+            },
+            colors: {
+              ios: {
+                blue: '#007AFF',
+                bg: '#000000',
+                card: '#1C1C1E',
+                input: '#2C2C2E',
+                text: '#FFFFFF',
+                subtext: '#8E8E93',
+              }
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: 0, transform: 'translateY(20px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /*
+        Тема приложения: все цвета задаются только здесь.
+        Чтобы поменять цвета — измени переменные в [data-theme="dark"], [data-theme="light"], [data-theme="gray"].
+        В компонентах используй классы: theme-text, theme-subtext, theme-muted, theme-accent, theme-success, theme-error, theme-warning, theme-like, theme-on-accent.
+      */
+      /* Fallback: если data-theme ещё не установлен (до скрипта), используем тёмную тему */
+      :root {
+        --theme-bg: #000000;
+        --theme-card: #0D0D0D;
+        --theme-input: #141414;
+        --theme-input-hover: #1A1A1A;
+        --theme-text: #FFFFFF;
+        --theme-border: rgba(255,255,255,0.06);
+        --theme-muted: #555559;
+      }
+      [data-theme="dark"] {
+        --theme-bg: #000000;
+        --theme-card: #0D0D0D;
+        --theme-card-hover: #141414;
+        --theme-input: #141414;
+        --theme-input-hover: #1A1A1A;
+        --theme-text: #FFFFFF;
+        --theme-subtext: #8E8E93;
+        --theme-accent: #3390EC;
+        --theme-success: #34C759;
+        --theme-error: #FF3B30;
+        --theme-warning: #FF9500;
+        --theme-like: #FF2D55;
+        --theme-on-accent: #FFFFFF;
+        --theme-border: rgba(255,255,255,0.06);
+        --theme-hover: rgba(255,255,255,0.04);
+        --theme-active: rgba(255,255,255,0.08);
+        --theme-scrollbar: #1A1A1A;
+        --theme-scrollbar-hover: #252525;
+        --theme-muted: #555559;
+        --theme-overlay: rgba(0,0,0,0.5);
+      }
+      [data-theme="light"] {
+        --theme-bg: #FFFFFF;
+        --theme-card: #F2F2F7;
+        --theme-card-hover: #E5E5EA;
+        --theme-input: #E5E5EA;
+        --theme-input-hover: #D1D1D6;
+        --theme-text: #000000;
+        --theme-subtext: #5C5C60;
+        --theme-accent: #007AFF;
+        --theme-success: #34C759;
+        --theme-error: #FF3B30;
+        --theme-warning: #FF9500;
+        --theme-like: #FF2D55;
+        --theme-on-accent: #FFFFFF;
+        --theme-border: rgba(0,0,0,0.12);
+        --theme-hover: rgba(0,0,0,0.06);
+        --theme-active: rgba(0,0,0,0.1);
+        --theme-scrollbar: #C7C7CC;
+        --theme-scrollbar-hover: #AEAEB2;
+        --theme-muted: #4A4A4E;
+        --theme-overlay: rgba(0,0,0,0.4);
+      }
+      [data-theme="gray"] {
+        --theme-bg: #0A0A0C;
+        --theme-card: #18181B;
+        --theme-card-hover: #222225;
+        --theme-input: #1E1E21;
+        --theme-input-hover: #262629;
+        --theme-text: #F5F5F7;
+        --theme-subtext: #9A9A9E;
+        --theme-accent: #4A9EFF;
+        --theme-success: #34C759;
+        --theme-error: #FF3B30;
+        --theme-warning: #FF9500;
+        --theme-like: #FF2D55;
+        --theme-on-accent: #FFFFFF;
+        --theme-border: rgba(255,255,255,0.08);
+        --theme-hover: rgba(255,255,255,0.05);
+        --theme-active: rgba(255,255,255,0.1);
+        --theme-scrollbar: #222225;
+        --theme-scrollbar-hover: #2E2E32;
+        --theme-muted: #6B6B70;
+        --theme-overlay: rgba(0,0,0,0.5);
+      }
+      body {
+        background-color: var(--theme-bg);
+        color: var(--theme-text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Prevent layout shifts */
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Stabilize scrollbar to prevent jumping */
+      html {
+        scrollbar-gutter: stable;
+      }
+      .safe-area-inset-top { padding-top: env(safe-area-inset-top, 0px); }
+      .sticky-top-safe { top: calc(1rem + env(safe-area-inset-top, 0px)); }
+      .page-top-gutter { padding-top: calc(1rem + env(safe-area-inset-top, 0px)); }
+      .theme-bg { background-color: var(--theme-bg); }
+      .theme-card { background-color: var(--theme-card); }
+      .theme-input { background-color: var(--theme-input); }
+      /* Поля ввода: убираем белый фон от автозаполнения браузера */
+      input.theme-input,
+      textarea.theme-input,
+      input[class*="theme-input"],
+      textarea[class*="theme-input"] {
+        background-color: var(--theme-input) !important;
+        color: var(--theme-text) !important;
+      }
+      input.theme-input::placeholder,
+      textarea.theme-input::placeholder,
+      input[class*="theme-input"]::placeholder,
+      textarea[class*="theme-input"]::placeholder {
+        color: var(--theme-muted) !important;
+      }
+      input.theme-input:-webkit-autofill,
+      input.theme-input:-webkit-autofill:hover,
+      input.theme-input:-webkit-autofill:focus,
+      input.theme-input:-webkit-autofill:active,
+      textarea.theme-input:-webkit-autofill,
+      textarea.theme-input:-webkit-autofill:hover,
+      textarea.theme-input:-webkit-autofill:focus,
+      textarea.theme-input:-webkit-autofill:active,
+      input[class*="theme-input"]:-webkit-autofill,
+      input[class*="theme-input"]:-webkit-autofill:hover,
+      input[class*="theme-input"]:-webkit-autofill:focus,
+      input[class*="theme-input"]:-webkit-autofill:active,
+      textarea[class*="theme-input"]:-webkit-autofill,
+      textarea[class*="theme-input"]:-webkit-autofill:hover,
+      textarea[class*="theme-input"]:-webkit-autofill:focus,
+      textarea[class*="theme-input"]:-webkit-autofill:active {
+        -webkit-text-fill-color: var(--theme-text) !important;
+        -webkit-box-shadow: 0 0 0 9999px var(--theme-input) inset !important;
+        box-shadow: 0 0 0 9999px var(--theme-input) inset !important;
+        background-color: var(--theme-input) !important;
+        color: var(--theme-text) !important;
+        transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
+      }
+      .theme-text { color: var(--theme-text); }
+      .theme-subtext { color: var(--theme-subtext); }
+      .theme-accent { color: var(--theme-accent); }
+      .theme-accent-bg { background-color: var(--theme-accent); }
+      .theme-muted { color: var(--theme-muted); }
+      .placeholder-theme-muted::placeholder { color: var(--theme-muted); }
+      .group:hover .group-hover\:theme-text { color: var(--theme-text); }
+      .hover\:theme-text:hover { color: var(--theme-text); }
+      .active\:theme-text:active { color: var(--theme-text); }
+      .hover\:theme-border:hover { border-color: var(--theme-border); }
+      .hover\:theme-subtext:hover { color: var(--theme-subtext); }
+      .theme-border { border-color: var(--theme-border); }
+      .theme-border-bg { background-color: var(--theme-border); }
+      .focus\:theme-border:focus { border-color: var(--theme-border); }
+      .theme-input-hover:hover { background-color: var(--theme-input-hover); }
+      .hover\:theme-input:hover { background-color: var(--theme-input); }
+      .theme-input-active:active { background-color: var(--theme-input-hover); }
+      .theme-card-hover:hover { background-color: var(--theme-card-hover); }
+      .divide-theme-border > * + * { border-top: 1px solid var(--theme-border); }
+      .group:focus-within .group-focus-within\:theme-text { color: var(--theme-text); }
+      .theme-hover:hover { background-color: var(--theme-hover); }
+      .theme-active:active { background-color: var(--theme-active); }
+      .theme-bg-backdrop { background-color: color-mix(in srgb, var(--theme-bg) 80%, transparent); }
+      .theme-liquid-glass {
+        background: rgba(42,42,46,0.72);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      [data-theme="light"] .theme-liquid-glass {
+        background: rgba(230,230,235,0.75);
+      }
+      .theme-liquid-glass-indicator {
+        background: rgba(255,255,255,0.1);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      }
+      [data-theme="light"] .theme-liquid-glass-indicator {
+        background: rgba(255,255,255,0.85);
+        box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+      }
+      .theme-accent-tint { background-color: color-mix(in srgb, var(--theme-accent) 20%, var(--theme-input)); }
+      .theme-success { color: var(--theme-success); }
+      .theme-error { color: var(--theme-error); }
+      .theme-warning { color: var(--theme-warning); }
+      .theme-like { color: var(--theme-like); }
+      .theme-on-accent { color: var(--theme-on-accent); }
+      .theme-error-bg { background-color: color-mix(in srgb, var(--theme-error) 12%, transparent); }
+      .theme-error-bg:hover { background-color: color-mix(in srgb, var(--theme-error) 18%, transparent); }
+      .theme-error-bg-solid { background-color: var(--theme-error); }
+      .theme-success-bg { background-color: var(--theme-success); }
+      .hover\:theme-accent:hover { color: var(--theme-accent); }
+      .theme-overlay { background-color: var(--theme-overlay); }
+
+      /* Slide Animations for Step Transitions */
+      @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(40px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-40px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      
+      .animate-slide-in-right {
+        animation: slideInRight 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      
+      .animate-slide-in-left {
+        animation: slideInLeft 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-up {
+        animation: slideUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      @keyframes slideUpFromBottom {
+        from { opacity: 0; transform: translateY(100%); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-up-from-bottom {
+        animation: slideUpFromBottom 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      /* Просмотр фото: появление с анимацией */
+      @keyframes photoViewerIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes photoViewerImageIn {
+        from { opacity: 0; transform: scale(0.92); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .photo-viewer-backdrop {
+        animation: photoViewerIn 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      .photo-viewer-content img {
+        animation: photoViewerImageIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      /* Скроллбары — цвета из темы */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--theme-scrollbar) transparent;
+      }
+      *::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      *::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      *::-webkit-scrollbar-thumb {
+        background: var(--theme-scrollbar);
+        border-radius: 3px;
+      }
+      *::-webkit-scrollbar-thumb:hover {
+        background: var(--theme-scrollbar-hover);
+      }
+      *::-webkit-scrollbar-button {
+        display: none;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 5px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: var(--theme-card);
+        border-radius: 3px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--theme-scrollbar);
+      }
+
+      /* iOS-style confirm dialog */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes confirmSlideUp {
+        from { opacity: 0; transform: translateY(100%); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @media (min-width: 768px) {
+        @keyframes confirmSlideUp {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+      }
+      
+      /* Fade-in animation for posts and content */
+      .animate-fade-in {
+        animation: fadeIn 0.2s ease-out forwards;
+        will-change: opacity;
+      }
+      
+      /* Fade-in-up animation (already defined in Tailwind config, but adding class) */
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        will-change: opacity, transform;
+      }
+
+      /* Poll: staggered option entrance */
+      @keyframes pollOptionIn {
+        from { opacity: 0; transform: translateY(8px) scale(0.97); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      .animate-poll-option-in {
+        animation: pollOptionIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      .animate-poll-option-in-delay-1 { animation-delay: 0.05s; }
+      .animate-poll-option-in-delay-2 { animation-delay: 0.1s; }
+      .animate-poll-option-in-delay-3 { animation-delay: 0.15s; }
+      .animate-poll-option-in-delay-4 { animation-delay: 0.2s; }
+      .animate-poll-option-in-delay-5 { animation-delay: 0.25s; }
+      .animate-poll-option-in-delay-6 { animation-delay: 0.3s; }
+      .animate-poll-option-in-delay-7 { animation-delay: 0.35s; }
+      .animate-poll-option-in-delay-8 { animation-delay: 0.4s; }
+      .animate-poll-option-in-delay-9 { animation-delay: 0.45s; }
+      .animate-poll-option-in-delay-10 { animation-delay: 0.5s; }
+
+      /* Poll: results bar fill */
+      @keyframes pollBarFill {
+        from { width: 0; }
+      }
+      .animate-poll-bar {
+        animation: pollBarFill 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      /* Poll form: expand in */
+      @keyframes pollFormExpand {
+        from { opacity: 0; transform: translateY(-12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-poll-form-expand {
+        animation: pollFormExpand 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      /* Poll option row: slide in when adding */
+      @keyframes pollRowIn {
+        from { opacity: 0; transform: translateX(-12px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      .animate-poll-row-in {
+        animation: pollRowIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      /* Subtle scale on tap */
+      @keyframes pollTap {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(0.98); }
+      }
+      .animate-poll-tap {
+        animation: pollTap 0.2s ease-out;
+      }
+      
+      /* EmojiTextArea: contenteditable с плейсхолдером */
+      .emoji-textarea {
+        outline: none;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        color: var(--theme-text);
+      }
+      .emoji-textarea.empty::before {
+        content: attr(data-placeholder);
+        color: var(--theme-muted);
+      }
+      .emoji-textarea img {
+        vertical-align: text-bottom;
+      }
+
+      /* Reduce motion for users who prefer it */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+    
+    <!-- JSON-LD Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Share",
+      "url": "https://share.app",
+      "logo": "https://share.app/logo.svg",
+      "description": "Share - социальная платформа для обмена контентом и общения",
+      "sameAs": [
+        "https://www.facebook.com/shareapp",
+        "https://twitter.com/shareapp",
+        "https://www.instagram.com/shareapp"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "support@share.app"
+      }
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data for WebSite with Search Action -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Share",
+      "url": "https://share.app",
+      "description": "Социальная платформа для обмена контентом",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://share.app/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+
+<link rel="stylesheet" href="https://sharesocial.ru/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+  <script type="module" crossorigin src="assets/index-BFAzYMWp.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
